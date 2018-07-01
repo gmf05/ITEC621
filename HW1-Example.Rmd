@@ -1,0 +1,20 @@
+---
+title: "ITEC 621 HW 1"
+author: "G. Fiddyment"
+---
+
+... Other questions will go above ...
+
+# Question 6
+
+**Display the object class for Gender (i.e., Credit$Gender), Income and Cards.**
+
+Here we load the Credit dataframe from a .csv file and explore the different types of variables in a few of its columns.
+
+```{r}
+Credit = read.csv('/Users/gfiddyment/Documents/ITEC621/Data/Credit.csv')
+class(Credit$Gender)
+# More code will go here, producing more outputs ...
+```
+
+... Other questions will go below ...
