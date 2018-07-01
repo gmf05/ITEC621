@@ -60,6 +60,12 @@ rm ~/Downloads/ITEC621-master.zip
 
 ## 4. Download [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/#download)
 
+## 5. Install R libraries
+
+Run the file `requirements.R`, which will install a series of libraries.
+
+## 6. Explore [`HW1-Example.Rmd`](https://raw.githubusercontent.com/gmf05/ITEC621/master/HW1-Example.Rmd), try knitting (optional)
+
 
 ##
 
