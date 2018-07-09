@@ -1,0 +1,156 @@
+---
+title: "Week 2 Breakouts"
+author: "ITEC 621"
+date: "7/9/2018"
+output: html_document
+---
+
+Answer the following questions by writing R code. Add your code in the corresponding code blocks below and note that some -- but not all -- code is provided for certain questions. When you're done, try knitting your `.Rmd` into an `.html` document. 
+
+# Breakout 1
+
+Computing the length, or norm, of a vector x is similar to finding the hypotenuse of a triangle. 
+To find the norm of x we do the following:
+
+1. Square all entries in `x`.
+2. Take the sum of `(1)`.
+3. Take the square root of the sum in `(2)`.
+
+## Question 1
+Write a function `my_norm(x)` that computes the length of a vector x. Use your function to compute the norm of the vectors `(3, 4)` and `(5, 12)`.
+
+**Bonus**: Can you write the function in one line?
+
+```{r}
+my_norm = function(x) {
+  return(x)  
+}
+
+my_norm(c(3,4))
+```
+
+
+## Question 2
+Write a function `max_norm(x, y)` that computes the norms of two vectors `x` and `y`, and returns only the greater value. (Hint: See `max()` )
+
+```{r}
+max_norm = function(x) {
+  return(x)
+}
+
+max_norm(c(3,4))
+```
+
+## Question 3
+Write a function `exclude_norm(x)` that computes the norm of a vector `x`, similar to Q1, except it ignores the first entry of `x`.
+
+```{r}
+exclude_norm = function(x) {
+  return(x)
+}
+
+exclude_norm(c(3,4))
+```
+
+# Breakout 2
+
+Simulate the system from Week 2 Slides (see slide 20, code copied below).
+
+```{r}
+# Load library
+library(MASS)
+
+# Generate some random data for predictor variables x1, x2
+nsamples = 100
+set.seed(1)
+x1 = rnorm(nsamples, mean=1, sd=1)
+x2 = rnorm(nsamples, mean=5, sd=5)
+epsilon = rnorm(nsamples, mean=0, sd=0.3)
+ones = matrix(1,nsamples,1)
+
+# Use a pre-chosen formula to create dependent variable y
+# (Ground truth)
+X = cbind(ones, x1, x2)
+X[1:3,]
+b = c(1.6, 3, -2)
+y = X %*% b + epsilon
+```
+
+## Question 1
+
+Estimate a model `b_est` from the data `y` and `X` using the function `ginv()`. How close is `b_est` to the true model `b`?
+```{r}
+
+```
+
+## Question 2
+
+Try changing the properties of the predictor variables:
+
+* Give `x1 mean=100, sd=10`.
+
+* Give `x2 mean=-5, sd=20`.
+
+What happens now when you run the functions from above?
+
+
+## Question 3. 
+Now estimate a model using `lm()`. Call the result `model_est`. How does it compare to `b_est`?
+
+**Bonus**: Try using summary() on the resulting linear model model_est.
+```{r}
+df = data.frame(y=y, X=X)
+# model.lm = lm( , data=df)
+```
+
+## Question 4. 
+Re-run Q3 where `epsilon` has `sd=3`. What does this do to `b_est` or `summary(model_est)`?
+```{r}
+
+```
+
+# Bonus
+
+## ISLR, Exercise 2.9 
+
+This exercise involves the `Auto` data set studied in the lab. Make sure that the missing values have been removed from the data.
+
+```{r}
+# Load ISLR library
+# Remove missing data values
+```
+
+a: Which of the predictors are quantitative and which are qualitative?  
+```{r}
+
+```
+
+b: What is the *range* of each quantiative predictor?
+```{r}
+
+```
+
+c: What is the mean and standard deviation of each quantiative predictor?
+
+**Hint**: Try using `describe()` in `library(psych)`.
+```{r}
+
+```
+
+d: Now remove the 10th through 85th observations. What is the range, mean, and standard deviation of each quantiative predictor in the subset of data that remains?
+```{r}
+
+```
+
+e: Using the full data set, investigate the predictors graphically using scatterplots or other tools of your choice. Comment on your findings.
+
+**Hint**: Try using `ggpairs()` in `library(GGally)`.
+```{r}
+
+```
+
+f: Suppose that we wish to predict gas mileage (`mpg`) on the basis of the other variables. Do your plots suggest that any of the other variables might be useful in predicting `mpg`? Justify your answer.
+```{r}
+
+```
+
