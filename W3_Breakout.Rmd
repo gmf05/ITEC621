@@ -1,0 +1,24 @@
+---
+title: "Week 3 Breakouts"
+author: "ITEC 621"
+date: "2/13/2018"
+output: html_document
+---
+
+## Week 3
+
+# Breakout 2
+```{r}
+# Download Advertising.csv from the course homepage, if you haven’t already, and load it as a data frame Advertising.
+
+# Advertising = read.csv()
+
+# Fit two models predicting the column Sales, shown in Table 3.1 and 3.4 in the ISLR textbook below.
+# model1 = lm()
+# summary(model1)
+# model2 = lm()
+# summary(model2)
+
+# Compare the models in terms of coefficients, p-values, and fit statistics.
+
+```
