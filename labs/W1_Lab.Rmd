@@ -1,0 +1,117 @@
+---
+title: "W1 Lab"
+author: "ITEC 621"
+date: "10/4/2018"
+output: html_document
+---
+
+**Important:** Before starting, make your own copy of this file with your initials at the end, e.g. `W1_Lab_gmf.Rmd`. This way your changes won't conflict with the class repo and are easier to track.
+
+First, try clicking into the R console and typing the commands in the code block below, one by one.
+
+```{r}
+library(ISLR)
+names(College)
+class(College)
+head(College)
+summary(College)
+head(College$Apps)
+hist(College$S.F.Ratio, 30)
+```
+
+Next, try navigating to the line `library(ISLR)` from within the .Rmd editor in RStudio. Type `CTRL+Enter` and watch the line flash green (hopefully). Then navigate down each line and repeat, watching the output. Notice the same lines are being run in `Console`.
+
+What does each function do?
+
+Now try running the following lines:
+
+```{r, eval=FALSE}
+College.small = College[ , c('Apps', 'Accept')]
+ggpairs(College.small)
+```
+
+You should receive an error (and a red flash in the text editor):
+
+```
+Error: could not find function "ggpairs"
+```
+
+Go to the console and type 
+```{r}
+??ggpairs
+```
+
+Notice there's a match: 
+
+```
+GGally::ggpairs
+```
+
+Which means the function is in a library called GGally. Let's load the library and try again:
+
+```{r}
+library(GGally)
+College.small = College[ , c('Apps', 'Accept')]
+ggpairs(College.small)
+```
+
+Additionally, let's comment out the offending line. Where we got an error with `ggpairs(College.small)`, let's add a `#` at the beginning of the line, which should cause it to change colors in the text editor.
+
+# Bonus
+```{r}
+
+# Q1. The (Euclidean) length, or norm, of a vector x is computed by
+# 1) Square all entries in x
+# 2) Sum the squared entries from (1)
+# 3) Take the square root of the sum from (2)
+# Write a function my_norm(x) that computes the Euclidean length of a vector x. 
+# Bonus: Can you write it in one line?
+# Use your function to compute the norm of the vectors (3, 4) and (5, 12)
+
+my_norm = function(x) {
+  return(x)
+}
+
+my_norm(c(3,4))
+my_norm(c(5,12))
+```
+
+
+```{r}
+# Q2. Write a function max_norm(x, y) that computes the norm of x and y, and returns only the greater value. (Hint: See max() )
+
+max_norm = function(x) {
+  return(x)
+}
+
+max_norm(c(3,4))
+max_norm(c(5,12))
+```
+
+```{r}
+# Q3. Simulate the system from W1 Slide 10. Run the commented functions and describe the outputs.
+# Change the parameters to the system from W1 Slide 10:
+# Give x1 mean=100, sd=10.
+# Give x2 mean = -5, sd=20. 
+# What happens now when you run the functions from above?
+
+# Generate some random data
+nsamples = 100
+set.seed(1)
+x1 = rnorm(nsamples, mean=1, sd=1)
+x2 = rnorm(nsamples, mean=5, sd=5)
+epsilon = rnorm(nsamples, mean=0, sd=0.3)
+ones = matrix(1,nsamples,1)
+
+# Organize data
+X = cbind(ones, x1, x2)
+X[1:3,]
+b = c(1.6, 3, -2)
+y = X %*% b + epsilon
+
+# Estimate model
+library(MASS)
+b_est = ginv(X) %*% y
+b_est
+
+```

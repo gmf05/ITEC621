@@ -1,0 +1,94 @@
+---
+title: "Hubway Trip Prediction"
+author: "Grant Fiddyment, ITEC 621"
+date: "10/4/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Understanding the factors that affect (QUESTION: animal adoption / bike usage / restaurant preference) is useful for (DECISION MAKER) because (REASON: shelters can rescue more animals / companies can direct resources and save money / restaurants can better appeal to customers). The (NAME) data set addresses this question by offering information on (DESCRIPTION: XXX animals adopted at the Austin animal shelter between YEAR X - YEAR Y / XXX bike rides done by YYY distinct users between YEAR X - YEAR Y / XXXX restaurants ranked in YYY different countries.) Here we analyze that data using (METHOD 1: logistic regression) and (METHOD 2: classification trees) to see which variables predict (Y: whether an animal is adopted / how long a given bike ride will be / whether customers will like a particular restaurant).
+
+## Data
+
+The (NAME) data set tracks (DATA: pet adoptions / bike usage / restaurant taste). These data were collected by (DATA COLLECTOR) and downloaded through Kaggle (CITE DATA SOURCE).
+[MORE INFO HERE: Here I'll expand on the description I gave above, including the total number of samples, any important ranges (e.g. years), and explicitly name which variables are response (Y) and predictors (X).]
+[FILTERING?: I'll also describe any additional filtering I've done to clean the data.]
+
+```{r}
+# Code for data loading and exploratory analysis
+# Feel free to adjust this section a lot, based on your own analysis / insights
+
+
+# Summary tables
+# summary()
+# describe()
+
+# Histograms
+# ggpairs()
+
+# Correlations
+# corrplot()
+
+# Split data (Or put this in Results)
+# Note: You may want a random sample [sample()], or you may want to explore
+# other principled ways of splitting the data, e.g. by year.
+# sample()
+
+```
+
+[DISCUSS ANY INSIGHTS FROM DATA ANALYSIS HERE. Are the correlations what you expect? Are you optimistic that your proposed model will work based on the correlations (i.e. How well does response variable correlated with predictors)? Any correlations you are worried could lead to multicollinearity?]
+
+## Results
+
+To build predictive models of (Y: animal adoption / bike usage / restaurant preference), we took a two step approach. First, we analyzed which variables were most successful in predicting (Y) through variable selection methods. Then, using a held-out sample from the data set, we compared the performance of two different predictive models: logistic regression and a classification tree.
+
+# Variable Selection
+
+Describe which techniques you used and why.
+
+```{r}
+
+# Split data (Or put this in Data)
+# Note: You may want a random sample [sample()], or you may want to explore
+# other principled ways of splitting the data, e.g. by year.
+# sample()
+
+# Code for variable selection
+
+```
+
+Explain your variable selection results
+
+# Model Comparison
+
+Describe which techniques you used and why.
+
+```{r}
+
+# Fit regression
+
+# Compute test error
+# predict()
+# mean() or table()
+
+# Fit tree
+
+# Compute test error
+# predict()
+# mean() or table()
+
+```
+
+Explain the results of your model comparison.
+
+## Conclusion
+
+Our analysis shows that, among (X1 X2 X3 predictor variables), the most important factors for predicting (response variable Y) are (variables X1 X2). [ELABORATE: Briefly summarize any important results that came up during variable selection, including whether you used LASSO / ridge / forward stepwise / backward stepwise / best subsets / etc.] Using these variables as predictors, we then compared the prediction accuracy of a logistic regression model versus a classification tree. We found that (MODEL X) consistently exhibited a lower false positive rate (i.e. across multiple classification thresholds).
+
+[ANY OTHER REFLECTIONS CAN GO HERE: Overall, this project showed me X Y Z. If I could repeat this analysis I would do A B C.]
+ 
