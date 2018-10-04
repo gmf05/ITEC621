@@ -2,4 +2,5 @@ packages = c("rmarkdown", "car", "caret", "coefplot", "corrplot", "ctv", "DataCo
 
 for (package in packages) {
     install.packages(package)
+    #require(package)
 }
