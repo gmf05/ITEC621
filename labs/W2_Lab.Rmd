@@ -1,129 +1,30 @@
 ---
-title: "Week 2 Breakouts"
+title: "Week 2 Lab"
 author: "ITEC 621"
-date: "7/9/2018"
+date: "10/11/2018"
 output: html_document
 ---
 
+**Important:** Before starting, make your own copy of this file with your initials at the end, e.g. `W2_Lab_gmf.Rmd`. This way your changes won't conflict with the class repo and are easier to track.
+
 Answer the following questions by writing R code. Add your code in the corresponding code blocks below and note that some -- but not all -- code is provided for certain questions. When you're done, try knitting your `.Rmd` into an `.html` document. 
 
-# Breakout 1
+### Q1: ISLR, Exercise 2.9 
 
-Computing the length, or norm, of a vector x is similar to finding the hypotenuse of a triangle. 
-To find the norm of x we do the following:
-
-1. Square all entries in `x`.
-2. Take the sum of `(1)`.
-3. Take the square root of the sum in `(2)`.
-
-## Question 1
-Write a function `my_norm(x)` that computes the length of a vector x. Use your function to compute the norm of the vectors `(3, 4)` and `(5, 12)`.
-
-**Bonus**: Can you write the function in one line?
+This exercise involves the `Auto` data set from the ISLR textbook/library.
 
 ```{r}
-my_norm = function(x) {
-  return(x)  
-}
-
-my_norm(c(3,4))
-```
-
-
-## Question 2
-Write a function `max_norm(x, y)` that computes the norms of two vectors `x` and `y`, and returns only the greater value. (Hint: See `max()` )
-
-```{r}
-max_norm = function(x) {
-  return(x)
-}
-
-max_norm(c(3,4))
-```
-
-## Question 3
-Write a function `exclude_norm(x)` that computes the norm of a vector `x`, similar to Q1, except it ignores the first entry of `x`.
-
-```{r}
-exclude_norm = function(x) {
-  return(x)
-}
-
-exclude_norm(c(3,4))
-```
-
-# Breakout 2
-
-Simulate the system from Week 2 Slides (see slide 20, code copied below).
-
-```{r}
-# Load library
-library(MASS)
-
-# Generate some random data for predictor variables x1, x2
-nsamples = 100
-set.seed(1)
-x1 = rnorm(nsamples, mean=1, sd=1)
-x2 = rnorm(nsamples, mean=5, sd=5)
-epsilon = rnorm(nsamples, mean=0, sd=0.3)
-ones = matrix(1,nsamples,1)
-
-# Use a pre-chosen formula to create dependent variable y
-# (Ground truth)
-X = cbind(ones, x1, x2)
-X[1:3,]
-b = c(1.6, 3, -2)
-y = X %*% b + epsilon
-```
-
-## Question 1
-
-Estimate a model `b_est` from the data `y` and `X` using the function `ginv()`. How close is `b_est` to the true model `b`?
-```{r}
-
-```
-
-## Question 2
-
-Try changing the properties of the predictor variables:
-
-* Give `x1 mean=100, sd=10`.
-
-* Give `x2 mean=-5, sd=20`.
-
-What happens now when you run the functions from above?
-
-
-## Question 3. 
-Now estimate a model using `lm()`. Call the result `model_est`. How does it compare to `b_est`?
-
-**Bonus**: Try using summary() on the resulting linear model model_est.
-```{r}
-df = data.frame(y=y, X=X)
-# model.lm = lm( , data=df)
-```
-
-## Question 4. 
-Re-run Q3 where `epsilon` has `sd=3`. What does this do to `b_est` or `summary(model_est)`?
-```{r}
-
-```
-
-# Bonus
-
-## ISLR, Exercise 2.9 
-
-This exercise involves the `Auto` data set studied in the lab. Make sure that the missing values have been removed from the data.
-
-```{r}
-# Load ISLR library
-# Remove missing data values
+# First we'll load the data and remove any rows with missing values
+library(ISLR)
+Auto = na.omit(Auto)
 ```
 
 a: Which of the predictors are quantitative and which are qualitative?  
 ```{r}
-
+# Add code here
 ```
+
+Add any text for part a here.
 
 b: What is the *range* of each quantiative predictor?
 ```{r}
@@ -153,4 +54,125 @@ f: Suppose that we wish to predict gas mileage (`mpg`) on the basis of the other
 ```{r}
 
 ```
+
+### Q2
+
+Computing the length, or norm, of a vector x is similar to finding the hypotenuse of a triangle. 
+To find the norm of x we do the following:
+
+* Square all entries in `x`.
+* Sum the squared entries.
+* Take the square root of the sum.
+
+Write a function `my_norm(x)` that computes the length of a vector x. Use your function to compute the norm of the vectors `(3, 4)` and `(5, 12)`.
+
+**Bonus**: Can you write the function in one line?
+
+```{r}
+my_norm = function(x) {
+  # Add / replace code in here
+  return(x)  
+}
+
+test_vec1 = c(3, 4)
+test_vec2 = c(5, 12)
+
+# This should output 5
+my_norm(test_vec1)
+
+# This should output 13
+my_norm(test_vec2)
+```
+
+
+### Q3
+Write a function `max_norm(x, y)` that computes the norms of two vectors `x` and `y`, and returns only the greater value. (Hint: See `max()` )
+
+```{r, eval=FALSE}
+max_norm = function(x) {
+  # Add / replace code in here
+  # Also, delete eval=FALSE from the header above
+  return(x)
+}
+
+max_norm(test_vec1, test_vec2)
+```
+
+### Q4
+
+Write a function `exclude_norm(x)` that computes the norm of a vector `x`, similar to Q1, except it ignores the first entry of `x`.
+
+```{r}
+exclude_norm = function(x) {
+  return(x)
+}
+
+# This should output 4
+exclude_norm(test_vec1)
+
+# All of these should output 5:
+exclude_norm(c(1, 3, 4))
+exclude_norm(c(2, 3, 4))
+exclude_norm(c(10, 3, 4))
+```
+
+### Q5: Simulation Study (Bonus)
+
+Simulate the three-dimensional system below.
+
+```{r}
+# Load library
+library(MASS)
+
+# Generate some random data for predictor variables x1, x2
+nsamples = 100
+set.seed(1)
+x1 = rnorm(nsamples, mean=1, sd=1)
+x2 = rnorm(nsamples, mean=5, sd=5)
+epsilon = rnorm(nsamples, mean=0, sd=0.3)
+ones = matrix(1,nsamples,1)
+
+# Use a pre-chosen formula to create dependent variable y
+# In real world situations, this ground truth formula
+# isn't known to us. But since this is simulation, we control it.
+X = cbind(ones, x1, x2)
+X[1:3,]
+b = c(1.6, 3, -2)
+y = X %*% b + epsilon
+```
+
+Estimate a model `b_est` from the data `y` and `X` using the function `ginv()`.
+```{r, eval=FALSE}
+# Remove eval=FALSE above and modify the code below
+b_est = X %*% y
+b_est
+```
+
+How close is `b_est` to the true model `b`?
+
+Now try changing the properties of the predictor variables:
+
+* Give `x1 mean=100, sd=10`.
+
+```{r, eval=FALSE}
+x1 = rnorm(nsamples, mean=1, sd=1)
+X = cbind(ones, x1, x2)
+y = X %*% b + epsilon
+b_est = X %*% y
+b_est
+```
+
+* Give `x2 mean=-5, sd=20`.
+
+```{r, eval=FALSE}
+x2 = rnorm(nsamples, mean=1, sd=1)
+X = cbind(ones, x1, x2)
+y = X %*% b + epsilon
+b_est = X %*% y
+b_est
+```
+
+What happens now to the estimated model `b_est` now?
+
+Now estimate a model using `lm()`. Call the result `model_est`. How does it compare to `b_est`?
 
