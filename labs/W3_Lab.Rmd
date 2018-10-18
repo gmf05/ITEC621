@@ -1,13 +1,10 @@
 ---
-title: "Week 3 Breakouts"
+title: "Week 3 Lab"
 author: "ITEC 621"
-date: "2/13/2018"
+date: "10/18/2018"
 output: html_document
 ---
 
-## Week 3
-
-# Breakout 2
 ```{r}
 # Download Advertising.csv from the course homepage, if you haven’t already, and load it as a data frame Advertising.
 
