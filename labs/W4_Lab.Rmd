@@ -1,0 +1,116 @@
+---
+title: "Week 4 Lab"
+author: "ITEC 621"
+date: "10/25/2018"
+output: html_document
+---
+
+# Question 1
+Consider the data frame `Hitters`.
+```{r}
+# First, load `Hitters` with `library(ISLR)`. 
+
+# Then save a reduced data frame `Hitters.mod` which has the columns `Hits, Walks, HmRun, RBI, AtBat, Years, Salary`. Also, remove the rows with NA values with
+# na.omit()
+
+
+# Finally, use `ggpairs()` to plot the variables in `Hitters.mod`.
+# Hint: Which library do we need?
+
+
+
+```
+
+# Question 2
+```{r}
+# Plot a histogram of `Hitters.mod$Walks` and comment on its features. 
+
+# Next add three columns to the `Hitters.mod` data frame.
+# For each one, plot a histogram.
+# 2.1 `WalksCenter`, a centered version of `Hitters$Walks`
+
+# 2.2 `WalksZ`, a standardized version of `Hitters$Walks`
+
+# 2.3 (Bonus) `WalksPctile`, a percentile version of `Hitters$Walks`
+
+```
+
+# Question 3
+```{r}
+# Suppose you had 65 walks
+
+# 3.1 Were you above/below the mean number of hits? 
+# How many hits above/below the mean?
+
+# 3.2 How many standard deviations above/below the mean did you have?
+
+# 3.3 What would your percentile rank be within the `Hitters.mod` data frame? (Hint: Try `ecdf(Hitters.mod$Walks)()`)
+ecdf(Hitters.mod$Walks)(65)
+```
+
+
+```{r}
+# 4. Fit four models based on the formulas below. Print model summaries and compare the coefficients.
+# 4.1 `Salary ~ Years + Hits + Walks`
+
+# 4.2 `Salary ~ Years + Hits + WalksCenter`
+
+# 4.3 `Salary ~ Years + Hits + WalksZ`
+
+# 4.4 `Salary ~ Years + Hits + WalksPctile`
+
+
+```
+
+# Question 5
+```{r}
+# Using the values you computed in Q3 and the coefficients for `model`, `model.center`, and `model.z` from the summaries in Q4, predict the Salary for Barry Bonds, who had the following stats in 1986: `Years=1, Hits=92, Walks=65`. Then compare all three models using an ANOVA test, `anova()`.
+
+# model:
+
+# model.center:
+
+# model.z:
+
+# model.ptile:
+
+
+# anova:
+
+```
+
+# Question 6
+```{r}
+# 6. Fit four models based on the formulas below. Print model summaries and compare the coefficients.
+
+# Note we need this so we never take log(0)
+Hitters.mod$Walks = Hitters.mod$Walks + 0.001
+
+# 6.1 `Salary ~ Years + Hits + poly(Walks, 2)`
+
+
+# 6.2 `Salary ~ Years + Hits + log(Walks)`
+
+
+# 6.3 `log(Salary) ~ Years + Hits + Walks`
+
+
+# 6.4 `log(Salary) ~ Years + Hits + log(Walks)`
+
+
+```
+
+7. Using the values you computed in Q3 and the coefficients for `model.poly`, `model.logx`, `model.logy`, and `model.loglog` from the summaries in Q6, predict the Salary for Barry Bonds, who had the following stats in 1986: `Years=1, Hits=92, Walks=65`. Note we *can't* use an ANOVA test on these models, since we transform Y in some cases. ANOVA requires identical Y across models.
+
+```{r}
+# model.poly:
+
+# model.logx:
+
+# model.logy:
+
+# model.loglog:
+
+```
+
+
