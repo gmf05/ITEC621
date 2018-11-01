@@ -1,0 +1,86 @@
+---
+title: "Week 5 Lab"
+author: "ITEC 621"
+date: "11/1/2018"
+output: html_document
+---
+
+```{r}
+# Load library ISLR and set seed for replication
+library(ISLR)
+set.seed(1)
+
+# Randomly split Auto into two data frames, Auto.train and Auto.test, each with 50% of the data.
+
+
+```
+
+# Question 1
+```{r}
+# Fit a model predicting mpg in terms of poly(horsepower, 1). 
+
+
+```
+
+# Question 2
+```{r}
+# Make predictions on the dasta and compute the mean squared error (MSE)
+# on the training data.
+
+```
+
+# Question 3
+```{r}
+# Repeat 1-2 for polynomials of order 2, 3, and 4. Print the training MSE for order 1-4 in a single vector. Do the same for the test MSE.((Assuming your goal is interpretation, which model would you choose? Why? (Assuming your goal is prediction, not interpretation, which model would you choose? ((Hint: You can copy/paste your code for Q1 **or** use a for loop.
+
+
+```
+
+# Question 4
+```{r}
+# Load library(car). Fit three linear models and compute the VIF for models 2 and 3 How would you explain the result?
+# mpg ~ horsepower
+# mpg ~ horsepower + weight
+# mpg ~ horsepower + weight + displacement
+
+library(car)
+
+# model1 = lm()
+# model2 = lm()
+# model3 = lm()
+
+
+```
+
+# Question 5
+```{r}
+# Load library boot
+library(boot) 
+
+# Fit a linear model glm.fit predicting mpg in terms of horsepower. 
+# Use the function glm() rather than lm() here.
+
+
+# Then use cv.glm() with K=10 to fit a set of cross-validated models. Print the MSE of the resulting CV model by accessing $delta[1].
+
+
+```
+
+# Question 6
+```{r}
+# Fit another set of cross-validated models, except now remove the K=10 argument or set it to K=nrow(Auto.train)-1. 
+# Print the MSE. How does it compare to 10-fold CV?
+
+
+```
+
+# Bonus
+```{r}
+# Install and load library(profvis). Then insert your code from Q1-2 inside the statement profvis({ }) and run it. What is the output?
+
+library(profvis)
+# profvis({
+# 
+# })
+
+```
