@@ -1,0 +1,87 @@
+---
+title: "Week 6 Labs"
+author: "ITEC 621"
+date: "11/8/2018"
+output: html_document
+---
+
+```{r}
+# Load libraries
+library(ISLR)
+library(car)
+library(leaps)
+library(glmnet)
+
+# We'll work with the "Hitters" data frame.
+head(Hitters)
+
+# Bonus: How many entries of Hitters$Salary are NA?
+# Hint: There are multiple ways to find this. Try using, e.g., summary()
+
+# Remove these rows using na.omit()
+
+```
+
+# Question 1
+```{r}
+# Fit a model lm.reduced predicting Salary in terms of AtBat, Hits, and Walks. 
+
+
+# Inspect the model’s variance inflation factors using vif().
+# Do you observe any issues? Support your position with plots and correlation estimates.
+
+```
+
+# Question 2
+```{r}
+# Copy the data frame as Hitters.copy and add a column Avg = Hits / AtBat:
+Hitters.copy = Hitters
+# Hitters.copy$Avg = 
+
+# Repeat Q1 using your new data frame, Hitters.copy,
+# replacing AtBats and Hits with Avg. What happens to the VIFs?
+
+```
+
+# Question 3
+```{r}
+# Now forget Hitters.copy and continue using Hitters.
+# Use regsubsets() to fit a predictive model for Salary in terms of all other variables.Save the model summary as reg.summary.
+
+```
+
+# Question 4
+```{r}
+# Using your reg.summary object, rank which variables are most important for predicting salary. If you were trying to make the most interpretable (i.e. small) model, which predictors would you include?
+
+```
+
+# Question 5
+```{r}
+# Define two variables
+# * y is Hitters$Salary
+# * X is a model.matrix() for Salary in terms of all other variables.
+
+# y = Hitters$Salary
+# X = model.matrix()
+
+# Using glmnet(), fit a model with alpha=0 and lambda=0. 
+# Then fit another model using the usual lm(). How do they compare?
+
+```
+
+# Question 6
+```{r}
+# Using the glmnet() function, fit ridge regression models with parameter
+# lambda = 1, 10, 100, 1000. What happens to the coefficients as lambda increases?
+
+```
+
+# Question 7
+```{r}
+# Repeat Q6 with LASSO regression models (alpha=1).
+
+```
+
+
+
