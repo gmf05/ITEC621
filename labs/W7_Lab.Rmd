@@ -1,0 +1,54 @@
+---
+title: "Week 7 Lab"
+author: "ITEC 621"
+date: "11/15/2018"
+output: html_document
+---
+
+```{r}
+library(ISLR)
+
+# Consider the Wage data frame.
+head(Wage)
+dim(Wage)
+
+# Average wage for each age and plot
+avgs = aggregate(Wage[, c('age', 'wage')], list(Wage$age), mean)
+plot(avgs$age, avgs$wage)
+lines(avgs$age, avgs$wage, col='black')
+```
+
+```{r}
+# 1. Fit four different models predicting wage as a polynomial function of age. Use polynomial functions of degree 1, 2, 4, and 6, respectively. Comparing the models using summary(), what do you observe?
+
+# model1 = lm()
+# model2 = lm()
+# model4 = lm()
+# model6 = lm()
+
+# summary(model1)
+# summary(model2)
+# summary(model4)
+# summary(model6)
+
+# 2. Compare the four models even further using an ANOVA test, anova(). Assuming your goal is prediction (rather than interpretation), which one would you choose?
+
+# anova()
+
+# 3. Define age.grid, a vector of ages from 18-80. Using predict() with newdata=list(age=age.grid), make predictions for wage at these ages based on each model. Use lines() to plot all four sets of predictions on the same axis, each one in a different color. How do the four predictions compare?
+
+# age.grid
+# wage.pred1 = predict()
+# lines(age.grid, wage.pred1, col='blue')
+
+# 4. Load library(splines) and repeat 1-3 fitting a B-spline with degree = 2 and knots at Age = c(25, 40, 60). Compre the model with a 4th-degree polynomial using anova(). Is the spline a better fit?
+
+library(splines)
+Age.knots = c(25, 40, 60)
+# model.spline = lm()
+# anova()
+
+
+
+```
+
