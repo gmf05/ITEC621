@@ -1,0 +1,40 @@
+---
+title: "Week 8 Lab"
+author: "ITEC 621"
+date: "11/25/2018"
+output: html_document
+---
+
+```{r}
+library(ISLR)
+
+# Consider the data set Smarket
+# Prelim: How many observations per year are there?
+# Hint: Try using table()
+
+# table()
+
+# 1. Fit a logistic regression model glm.fit predicting (log-odds) Smarket$Direction each day in terms of all other variables except Today. Which ones significantly predict the stock market direction?
+
+# glm.fit = glm()
+# summary(glm.fit)
+
+# 2. From your model, make a vector glm.probs representing the probability that the direction will be Up each day. 
+
+# glm.probs = predict()
+
+# What is the average probability? Does that suggest anything about the data/model?
+
+# 3. Using a classification threshold of 0.5 (i.e. if predicted probability is >= .5, then predicted class is Up) and ifelse(), make a vector of predictions on whether the market will go Up or Down each day, glm.preds. 
+
+# glm.preds = ifelse()
+
+# 4. Make a confusion matrix comparing the true values Smarket$Direction against the predictions glm.preds. What is the error rate, sensitivity and specificity?
+
+# conf.matrix = table()
+
+# Repeat Q3-4 with a classification threshold of 0.45 and 0.6. How do your fit statistics change? Which of the three thresholds would you choose?
+
+```
+
+
