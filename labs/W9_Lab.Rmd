@@ -1,0 +1,63 @@
+---
+title: "Week 9 Lab"
+author: "ITEC 621"
+date: "11/29/2018"
+output: html_document
+---
+
+```{r}
+library(ISLR)
+library(tree)
+
+# We will use the data frame Carseats.
+# Add a column Carseats$High, which is 0 if Sales <= 8 and 1 otherwise.
+# NOTE: You may need to use as.factor() here.
+
+# Carseats$High = as.factor(ifelse())
+
+# Set seed to 1 and save the data in a 75/25 train/test split, Carseats.train (300 samples) and Carseats.test (100 samples).
+set.seed(1)
+# train = sample()
+# Carseats.train = Carseats[]
+# Carseats.test = Carseats[]
+
+# 1. Fit a regression tree on the training data. 
+# Hint: What is the response variable if we're fitting a regression tree?
+# Using plot() and summary() answer: What are the most important predictors? What are the predicted values?
+# my.reg.tree = tree()
+
+# 2. Fit a classification tree on the training data.
+# Hint: What is the response variable if we're fitting a classification tree?
+# Again, using plot() and summary() answer: What are the most important predictors? What are the predicted values?
+# Do you see any differences between the two tree models?
+# my.class.tree = tree()
+
+```
+
+```{r}
+
+# Answer the following using the same 75/25 data split and classification tree from earlier in the lab.
+# 
+# 3. Using predict(), compute the probability each training sample has high sales, prob.train. Do the same for the test data. Then, using ifelse(), assign High=0 or High=1 for all training samples. Do the same for the test data. (Hint: Use a threshold of 0.5)
+# prob.train = predict()[,2]
+# prob.test = predict()[,2]
+# pred.train = ifelse()
+# pred.test = ifelse()
+
+# 4. Now compute the confusion matrix for both the training and test data. What are overall the error rates? How do they compare between training/test data?
+# conf.train = table()
+# conf.test = table()
+# error.train = 1 - sum(diag(conf.train)) / sum(conf.train)
+# error.train
+# error.test = 1 - sum(diag(conf.test)) / sum(conf.test)
+# error.test
+
+# 5. Load the randomForest library. Fit a random forest using 6 variables (mtry=6). From the variable importance plot, varImpPlot(), which variables seem to be most important?
+library(randomForest)
+
+# rf6 = randomForest()
+# varImpPlot()
+
+# 4. Repeat Q3 with mtry=2 and mtry=10. How do your results compare?
+
+```
